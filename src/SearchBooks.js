@@ -1,33 +1,47 @@
 import React, { Component } from 'react'
 import './App.css'
 import * as BooksAPI from './utils/BooksAPI'
+import SearchInput from './SearchInput'
+import BookShelfItem from './BookShelfItem'
+import BookShelf from './BookShelf'
+
 
 class SearchBooks extends React.Component {
+  constructor(props) {
+    super(props);
+        
+    this.state = {
+      query: '',
+      books: []
+    }
 
-  state = {
-    query: '',
-    books: []
+    this.updateQuery = this.updateQuery.bind(this)
+    this.onSearch = this.onSearch.bind(this)
   }
 
-  updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+  updateQuery = (e) => {
+    this.setState({ query: e.target.value.trim() })
   }
 
   clearQuery = () => {
     this.setState({ query: ''})
-    console.log
   }
 
-  onSearch = (keyword, count) => {
+  onSearch = (e) => {
+    const results = 20;
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      return this.getResultsBooks(this.state.query, results)
+    }
+  }
+
+  getResultsBooks = (keyword, count) => {
     BooksAPI.search(keyword, count).then((books) => {
       this.setState({ books })
-      console.log(this.state.books);
     })
-    
   }
 
   render() {
-
     let showingBooks = this.state.books
     const { query } = this.state.query
     if (query) {
@@ -38,12 +52,12 @@ class SearchBooks extends React.Component {
         <div className="search-books-bar">
           <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
           <div className="search-books-input-wrapper">
-            <input
-              type="text"
-              value={this.state.query}
-              onChange={(event) => this.updateQuery(event.target.value)}
-              onKeyPress={(event) => {(event.key === 'Enter' ? this.onSearch(query, 20) : null)}}
-              placeholder="Search by title or author"/>
+            <SearchInput
+              content={query}
+              controlFunc={this.updateQuery}
+              handelKeyPress={this.onSearch}
+              placeholder="Search by title or author"
+            />
           </div>
         </div>
         <div className="search-books-results">
@@ -51,7 +65,10 @@ class SearchBooks extends React.Component {
             {showingBooks.length === 0 ? (
               <p>No Results</p>
             ) : (
-              <li>Yay! Have Result!</li>
+              <div>
+              <BookShelf title="Result" {...showingBooks}
+              />
+              </div>
             )}
           </ol>
         </div>
