@@ -14,9 +14,7 @@ class BooksApp extends React.Component {
     books: [],
     showSearchPage: true
   }
-
-
-
+  
   render() {
     return (
       <div className="app">

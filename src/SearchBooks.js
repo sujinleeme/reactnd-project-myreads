@@ -50,7 +50,10 @@ class SearchBooks extends React.Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+          <a className="close-search"
+            onClick={() => this.setState({ showSearchPage: false })}>
+            Close
+          </a>
           <div className="search-books-input-wrapper">
             <SearchInput
               content={query}
@@ -62,13 +65,11 @@ class SearchBooks extends React.Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {showingBooks.length === 0 ? (
-              <p>No Results</p>
-            ) : (
+            {this.state.books && this.state.books.length > 0 ? (
               <div>
-              <BookShelf title="Result" {...showingBooks}
-              />
-              </div>
+                <BookShelf bookList={this.state.books} title="Result" />
+              </div> ) : (
+              <p>No Book Found :(</p>
             )}
           </ol>
         </div>
