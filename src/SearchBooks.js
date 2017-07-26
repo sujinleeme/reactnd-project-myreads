@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import * as BooksAPI from './utils/BooksAPI'
-import SearchInput from './SearchInput'
+import * as utils from './utils/Common'
+import Autocomplete from './Autocomplete'
 import BookShelfItem from './BookShelfItem'
 import BookShelf from './BookShelf'
 
@@ -20,7 +21,7 @@ class SearchBooks extends React.Component {
   }
 
   updateQuery = (e) => {
-    this.setState({ query: e.target.value.trim() })
+    this.setState({ query: e.target.value.trim()})
   }
 
   clearQuery = () => {
@@ -55,8 +56,9 @@ class SearchBooks extends React.Component {
             Close
           </a>
           <div className="search-books-input-wrapper">
-            <SearchInput
-              content={query}
+
+            <Autocomplete 
+              content={this.state.query}
               controlFunc={this.updateQuery}
               handelKeyPress={this.onSearch}
               placeholder="Search by title or author"
