@@ -12,7 +12,7 @@ class AutocompleteItem extends React.Component {
 
   render() {
     return (
-      <li>{this.props.label}</li>
+      <li key={this.props.label}>{this.props.label}</li>
     )
   }
 }
