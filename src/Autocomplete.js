@@ -25,16 +25,16 @@ class Autocomplete extends React.Component {
       list: SearchKeywords,
       showItems: true,
       selectAllTextOnClick: true,
-      defaultValue: 2,
-      currentValue: this.props.defaultValue,
-      highlightedValue: this.props.defaultValue,
-      onNoMatch: () => {} 
+      selectedItem: ''
     }
   }
-
+  getSelectedItemData = (data) =>{
+    this.setState({selectedItem: data});     
+  }
   render() {
     const props = this.props;
     let searchableKeywords = this.currentMatches()
+    // console.log(this.props.content)
     return (
       <div>
         <SearchInput {...props} />
@@ -46,16 +46,24 @@ class Autocomplete extends React.Component {
   }
 
   renderMatches() {
+    const props = this.props;
     let searchableKeywords = this.currentMatches()
+
     return (
       <ol className="match-keywords">
         {Object.keys(searchableKeywords).map((k, index) =>
-          <AutocompleteItem {...searchableKeywords[k]} />
+          <AutocompleteItem
+            key={k}
+            onClick={props.handelKeyPress}
+            query={this.props.content}
+            sendData={this.getSelectedItemData}
+            {...props}            
+            {...searchableKeywords[k]} />
         )} 
       </ol>
    )
   }
-
+  
   currentMatches() {
     const list = this.state.list.SearchKeywords
     return list.filter((item) => {

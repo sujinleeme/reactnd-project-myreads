@@ -34,7 +34,9 @@ class SearchBooks extends React.Component {
       e.preventDefault()
       return this.getResultsBooks(this.state.query, results)
     }
+    
   }
+
 
   getResultsBooks = (keyword, count) => {
     BooksAPI.search(keyword, count).then((books) => {
@@ -45,6 +47,7 @@ class SearchBooks extends React.Component {
   render() {
     let showingBooks = this.state.books
     const { query } = this.state.query
+    const { props } = this.props
     if (query) {
       showingBooks = showingBooks
     }
@@ -56,8 +59,8 @@ class SearchBooks extends React.Component {
             Close
           </a>
           <div className="search-books-input-wrapper">
-
             <Autocomplete 
+              {...props}
               content={this.state.query}
               controlFunc={this.updateQuery}
               handelKeyPress={this.onSearch}
