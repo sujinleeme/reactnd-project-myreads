@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import './App.css'
 import * as BooksAPI from './utils/BooksAPI'
 import * as utils from './utils/Common'
@@ -13,19 +14,30 @@ class SearchBooks extends React.Component {
         
     this.state = {
       query: '',
-      books: []
+      books: [],
+      highlightedValue: '',
+      inputValue: ''
     }
 
     this.updateQuery = this.updateQuery.bind(this)
     this.onSearch = this.onSearch.bind(this)
+    this.changeInputValue = this.changeInputValue.bind(this)
+    this.handleKeywordChange = this.handleKeywordChange.bind(this)
   }
 
   updateQuery = (e) => {
-    this.setState({ query: e.target.value.trim()})
+    console.log(e);
+    this.setState({ query:  e.target.value.trim() })
+    this.setState({ inputValue:  e.target.value.trim() })
   }
 
   clearQuery = () => {
     this.setState({ query: ''})
+  }
+
+  changeInputValue = (e) => {
+    e.target.value = this.state.highlightedValue
+    this.updateQuery(e)    
   }
 
   onSearch = (e) => {
@@ -34,14 +46,16 @@ class SearchBooks extends React.Component {
       e.preventDefault()
       return this.getResultsBooks(this.state.query, results)
     }
-    
   }
-
 
   getResultsBooks = (keyword, count) => {
     BooksAPI.search(keyword, count).then((books) => {
       this.setState({ books })
     })
+  }
+  handleKeywordChange = (itemValue) => {
+    this.setState({ highlightedValue: itemValue })
+    this.setState({ inputValue: itemValue });
   }
 
   render() {
@@ -59,11 +73,14 @@ class SearchBooks extends React.Component {
             Close
           </a>
           <div className="search-books-input-wrapper">
-            <Autocomplete 
-              {...props}
+            <Autocomplete
+              highlightedValue={this.state.highlightedValue}
               content={this.state.query}
+              inputValue={this.state.inputValue}
               controlFunc={this.updateQuery}
+              changeInputValue={this.changeInputValue}
               handelKeyPress={this.onSearch}
+              onSelectItem={this.handleKeywordChange}
               placeholder="Search by title or author"
             />
           </div>

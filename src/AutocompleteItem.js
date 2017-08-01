@@ -7,40 +7,24 @@ class AutocompleteItem extends React.Component {
     super(props);
 
     this.state = {
-      currentLabel: '',
-      highlightedValue: '',
-      hover_flag: false,
-      isSelected: false,
-      // query: ''
+      hoverFlag: false,
     }
     
     this.hoverEvent = this.hoverEvent.bind(this)
-    this.handleCheck = this.handleCheck.bind(this)
 
   }
 
-  onClick() {
-  }
 
   hoverEvent() {
-    this.setState({hover_flag: !this.state.hover_flag})
-    console.log(this.props.label)
-    this.props.sendData(this.props.label)
-  }
-
-  getMapPoint() {
-
-  }
-
-  handleCheck() {
-    console.log(this.handleCheck)
+    this.setState({hoverFlag : !this.state.hoverFlag})
+    this.props.onSelectItem(this.props.label)
   }
 
   render() {
     var liStyle = {
       background: 'blue'
     };
-    if (this.state.hover_flag) {
+    if (this.state.hoverFlag) {
       liStyle['background'] = '#880000';
     }
 
@@ -50,7 +34,7 @@ class AutocompleteItem extends React.Component {
         key={this.props.label}
         onMouseEnter={this.hoverEvent}
         onMouseLeave={this.hoverEvent}
-        onClick={this.handleCheck.bind(this)}
+
         style={liStyle}
         >{this.props.label}</li>
     )

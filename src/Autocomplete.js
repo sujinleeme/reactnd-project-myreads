@@ -1,21 +1,8 @@
 import React from 'react';
 import * as SearchKeywords from './utils/SearchKeywords'
 import AutocompleteItem from './AutocompleteItem'
+import SearchInput from './SearchInput'
 
-const SearchInput = (props) => (
-  <input
-    className={props.className}
-    name={props.name}
-    value={props.content}
-    onChange={props.controlFunc}
-    onKeyPress={props.handelKeyPress}
-    placeholder={props.placeholder}
-  />
-);
-
-SearchInput.propTypes = {
-
-}
 
 class Autocomplete extends React.Component {
   constructor(props) {
@@ -24,20 +11,19 @@ class Autocomplete extends React.Component {
     this.state = {
       list: SearchKeywords,
       showItems: true,
-      selectAllTextOnClick: true,
-      selectedItem: ''
     }
   }
-  getSelectedItemData = (data) =>{
-    this.setState({selectedItem: data});     
-  }
+  
+
   render() {
     const props = this.props;
     let searchableKeywords = this.currentMatches()
     // console.log(this.props.content)
     return (
       <div>
-        <SearchInput {...props} />
+        <SearchInput
+//          highlightedValue={this.props.highlightedValue}
+          {...props} />
         {this.state.showItems?
           this.renderMatches():
         null}
@@ -54,9 +40,6 @@ class Autocomplete extends React.Component {
         {Object.keys(searchableKeywords).map((k, index) =>
           <AutocompleteItem
             key={k}
-            onClick={props.handelKeyPress}
-            query={this.props.content}
-            sendData={this.getSelectedItemData}
             {...props}            
             {...searchableKeywords[k]} />
         )} 

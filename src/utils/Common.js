@@ -5,8 +5,6 @@ export const deepCopy = (obj) => {
   return null;
 }
 
-
-
 export const capitalizeTitle = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
