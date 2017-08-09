@@ -1,6 +1,5 @@
 import * as utils from './Common'
 
-
 const words = [
   'Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen',
   'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business',

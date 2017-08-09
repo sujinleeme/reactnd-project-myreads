@@ -18,15 +18,13 @@ class Autocomplete extends React.Component {
   render() {
     const props = this.props;
     let searchableKeywords = this.currentMatches()
-    // console.log(this.props.content)
     return (
       <div>
         <SearchInput
-//          highlightedValue={this.props.highlightedValue}
           {...props} />
-        {this.state.showItems?
-          this.renderMatches():
-        null}
+          {this.state.showItems?
+            this.renderMatches():
+          null}
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 import './App.css'
 import * as BooksAPI from './utils/BooksAPI'
 import * as utils from './utils/Common'
@@ -53,6 +53,7 @@ class SearchBooks extends React.Component {
       this.setState({ books })
     })
   }
+
   handleKeywordChange = (itemValue) => {
     this.setState({ highlightedValue: itemValue })
     this.setState({ inputValue: itemValue });
@@ -68,10 +69,13 @@ class SearchBooks extends React.Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search"
-            onClick={() => this.setState({ showSearchPage: false })}>
-            Close
-          </a>
+          <div className="close-search">
+          <Link
+                to='/'
+                className="close-search"
+          />
+          </div>
+          
           <div className="search-books-input-wrapper">
             <Autocomplete
               highlightedValue={this.state.highlightedValue}

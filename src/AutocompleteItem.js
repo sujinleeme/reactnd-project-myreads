@@ -14,7 +14,6 @@ class AutocompleteItem extends React.Component {
 
   }
 
-
   hoverEvent() {
     this.setState({hoverFlag : !this.state.hoverFlag})
     this.props.onSelectItem(this.props.label)
@@ -24,6 +23,7 @@ class AutocompleteItem extends React.Component {
     var liStyle = {
       background: 'blue'
     };
+
     if (this.state.hoverFlag) {
       liStyle['background'] = '#880000';
     }
@@ -34,7 +34,6 @@ class AutocompleteItem extends React.Component {
         key={this.props.label}
         onMouseEnter={this.hoverEvent}
         onMouseLeave={this.hoverEvent}
-
         style={liStyle}
         >{this.props.label}</li>
     )
