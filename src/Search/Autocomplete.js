@@ -1,5 +1,5 @@
 import React from 'react';
-import * as SearchKeywords from './utils/SearchKeywords'
+import * as SearchKeywords from '../utils/SearchKeywords'
 import AutocompleteItem from './AutocompleteItem'
 import SearchInput from './SearchInput'
 
@@ -10,18 +10,26 @@ class Autocomplete extends React.Component {
 
     this.state = {
       list: SearchKeywords,
-      showItems: true,
+      showItems: false,
     }
+
   }
   
+  
+  componentWillMount() {
+    if (!this.state.showItems) {
+      this.setState({showItems: true})
+    }
+  }
 
   render() {
     const props = this.props;
-    let searchableKeywords = this.currentMatches()
     return (
       <div>
         <SearchInput
-          {...props} />
+          {...props}
+          
+          />
           {this.state.showItems?
             this.renderMatches():
           null}
@@ -31,9 +39,12 @@ class Autocomplete extends React.Component {
 
   renderMatches() {
     const props = this.props;
+    
     let searchableKeywords = this.currentMatches()
-
+    
     return (
+
+      
       <ol className="match-keywords">
         {Object.keys(searchableKeywords).map((k, index) =>
           <AutocompleteItem
@@ -48,7 +59,7 @@ class Autocomplete extends React.Component {
   currentMatches() {
     const list = this.state.list.SearchKeywords
     return list.filter((item) => {
-      let searchInput = this.props.content;
+      let searchInput = this.props.query;
       return item.label.indexOf(searchInput) > -1;
     })
   }

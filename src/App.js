@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import * as BooksAPI from './utils/BooksAPI'
-import SearchBooks from './SearchBooks'
+import SearchBooks from './Search/SearchBooks'
 import MyBookList from './MyBookList'
 
 

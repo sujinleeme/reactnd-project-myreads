@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import * as utils from './utils/Common'
+import * as utils from '../utils/Common'
 
 const BookStyle = {
   width: 128,

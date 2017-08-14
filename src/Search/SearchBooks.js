@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './App.css'
-import * as BooksAPI from './utils/BooksAPI'
-import * as utils from './utils/Common'
+import '../App.css'
+import * as BooksAPI from '../utils/BooksAPI'
 import Autocomplete from './Autocomplete'
-import BookShelfItem from './BookShelfItem'
-import BookShelf from './BookShelf'
+import BookShelf from '../Bookshelf/BookShelf'
+
 
 
 class SearchBooks extends React.Component {
@@ -26,9 +25,16 @@ class SearchBooks extends React.Component {
   }
 
   updateQuery = (e) => {
-    console.log(e);
-    this.setState({ query:  e.target.value.trim() })
-    this.setState({ inputValue:  e.target.value.trim() })
+    let word;
+    if (e.target){
+      word = e.target.value.trim();
+    }
+    else {
+      word = e;
+    }
+
+    this.setState({ query: word})
+    this.setState({ inputValue:  word })
   }
 
   clearQuery = () => {
@@ -60,12 +66,6 @@ class SearchBooks extends React.Component {
   }
 
   render() {
-    let showingBooks = this.state.books
-    const { query } = this.state.query
-    const { props } = this.props
-    if (query) {
-      showingBooks = showingBooks
-    }
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -79,7 +79,7 @@ class SearchBooks extends React.Component {
           <div className="search-books-input-wrapper">
             <Autocomplete
               highlightedValue={this.state.highlightedValue}
-              content={this.state.query}
+              query={this.state.query}
               inputValue={this.state.inputValue}
               controlFunc={this.updateQuery}
               changeInputValue={this.changeInputValue}
