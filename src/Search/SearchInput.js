@@ -1,10 +1,6 @@
 import React from 'react';
 
 class SearchInput extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
   
   render() {
     const props = this.props;

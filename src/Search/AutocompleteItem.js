@@ -1,5 +1,4 @@
 import React from 'react';
-import * as SearchKeywords from '../utils/SearchKeywords'
 
 class AutocompleteItem extends React.Component {
 
@@ -11,7 +10,6 @@ class AutocompleteItem extends React.Component {
       clickEvent: null
       
     }
-    
     this.onHover = this.onHover.bind(this)
     this.offHover = this.offHover.bind(this)
     this.onEvent = this.onEvent.bind(this)
@@ -32,7 +30,6 @@ class AutocompleteItem extends React.Component {
     this.setState({hoverFlag : false})
     this.props.onSelectItem(this.props.label)
     this.setState({clickEvent: event});
-    
   }
 
   render() {
@@ -49,11 +46,10 @@ class AutocompleteItem extends React.Component {
     <li
         key={props.label}
         onClick={this.onEvent}
-
         onMouseEnter={this.onHover}
         onMouseLeave={this.offHover}
         style={liStyle}
-        >{props.label}</li>
+    >{props.label}</li>
     )
   }
 }

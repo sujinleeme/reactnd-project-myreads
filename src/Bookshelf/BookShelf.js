@@ -3,9 +3,6 @@ import BookShelfItem from './BookShelfItem'
 
 class BookShelf extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
       
   render() {
     const BookList = {...this.props.bookList}

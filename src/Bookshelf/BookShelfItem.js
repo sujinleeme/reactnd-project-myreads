@@ -1,7 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React from 'react'
 import BookDetailButton from './BookDetailButton'
-
 import * as utils from '../utils/Common'
 
 const BookStyle = {
@@ -10,10 +8,6 @@ const BookStyle = {
 }
 
 class BookShelfItem extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   getImageLink = (obj) => {
     const imageList = utils.deepCopy(obj.imageLinks)

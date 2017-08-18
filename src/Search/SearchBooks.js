@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import '../App.css'
 import * as BooksAPI from '../utils/BooksAPI'
 import Autocomplete from './Autocomplete'
 import BookShelf from '../Bookshelf/BookShelf'
-import { Route } from 'react-router-dom'
-
-
 
 class SearchBooks extends React.Component {
   constructor(props) {
@@ -52,6 +49,9 @@ class SearchBooks extends React.Component {
   handelKeyPress = (e) => {
     let code = (e.keyCode ? e.keyCode : e.which);
     switch (code) {
+      default: 
+        break
+
       case 13: // enter
         e.preventDefault()
         this.trimQuery()
@@ -59,6 +59,7 @@ class SearchBooks extends React.Component {
         break
       case 32:  // space
         return false
+      
         
     }
 

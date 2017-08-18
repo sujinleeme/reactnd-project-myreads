@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
 import SearchBooks from './Search/SearchBooks'
 import MyBookList from './MyBookList'
-import * as BooksAPI from './utils/BooksAPI'
 
 
 import './App.css'
@@ -18,16 +17,12 @@ class BooksApp extends React.Component {
     books: []
   }
 
-   
   
   render() {
     return (
       <div className="app">
         <Route exact path='/' component={MyBookList} />
         <Route path='/search' component={SearchBooks} />
-          
-
-
       </div>
     )
   }
