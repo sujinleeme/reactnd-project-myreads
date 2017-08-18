@@ -2,6 +2,7 @@ import React from 'react';
 import * as SearchKeywords from '../utils/SearchKeywords'
 import AutocompleteItem from './AutocompleteItem'
 import SearchInput from './SearchInput'
+import { Link } from 'react-router-dom'
 
 
 class Autocomplete extends React.Component {
@@ -25,7 +26,7 @@ class Autocomplete extends React.Component {
   render() {
     const props = this.props;
     return (
-      <div>
+      <Link to={`/search?q=${props.query}`}  >
         <SearchInput
           {...props}
           
@@ -33,7 +34,7 @@ class Autocomplete extends React.Component {
           {this.state.showItems?
             this.renderMatches():
           null}
-      </div>
+      </Link>
     )
   }
 

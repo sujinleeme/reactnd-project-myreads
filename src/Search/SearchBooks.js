@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import '../App.css'
 import * as BooksAPI from '../utils/BooksAPI'
 import Autocomplete from './Autocomplete'
 import BookShelf from '../Bookshelf/BookShelf'
+import { Route } from 'react-router-dom'
 
 
 
@@ -15,11 +16,12 @@ class SearchBooks extends React.Component {
       query: '',
       books: [],
       highlightedValue: '',
-      inputValue: ''
+      inputValue: '',
+      resultNum: 20
     }
 
     this.updateQuery = this.updateQuery.bind(this)
-    this.onSearch = this.onSearch.bind(this)
+    this.handelKeyPress = this.handelKeyPress.bind(this)
     this.changeInputValue = this.changeInputValue.bind(this)
     this.handleKeywordChange = this.handleKeywordChange.bind(this)
   }
@@ -27,7 +29,7 @@ class SearchBooks extends React.Component {
   updateQuery = (e) => {
     let word;
     if (e.target){
-      word = e.target.value.trim();
+      word = e.target.value
     }
     else {
       word = e;
@@ -37,8 +39,9 @@ class SearchBooks extends React.Component {
     this.setState({ inputValue:  word })
   }
 
-  clearQuery = () => {
-    this.setState({ query: ''})
+  trimQuery = () => {
+    this.setState({ query: this.state.query.trim() })
+    this.setState({ inputValue: this.state.inputValue.trim() })
   }
 
   changeInputValue = (e) => {
@@ -46,15 +49,22 @@ class SearchBooks extends React.Component {
     this.updateQuery(e)    
   }
 
-  onSearch = (e) => {
-    const results = 20;
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      return this.getResultsBooks(this.state.query, results)
+  handelKeyPress = (e) => {
+    let code = (e.keyCode ? e.keyCode : e.which);
+    switch (code) {
+      case 13: // enter
+        e.preventDefault()
+        this.trimQuery()
+        this.onSearchBooks(this.state.query, this.state.resultNum)
+        break
+      case 32:  // space
+        return false
+        
     }
+
   }
 
-  getResultsBooks = (keyword, count) => {
+  onSearchBooks = (keyword, count) => {
     BooksAPI.search(keyword, count).then((books) => {
       this.setState({ books })
     })
@@ -68,6 +78,7 @@ class SearchBooks extends React.Component {
   render() {
     return (
       <div className="search-books">
+
         <div className="search-books-bar">
           <div className="close-search">
           <Link
@@ -83,7 +94,7 @@ class SearchBooks extends React.Component {
               inputValue={this.state.inputValue}
               controlFunc={this.updateQuery}
               changeInputValue={this.changeInputValue}
-              handelKeyPress={this.onSearch}
+              handelKeyPress={this.handelKeyPress}
               onSelectItem={this.handleKeywordChange}
               placeholder="Search by title or author"
             />
