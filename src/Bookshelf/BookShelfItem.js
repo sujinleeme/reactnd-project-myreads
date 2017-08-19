@@ -16,6 +16,8 @@ class BookShelfItem extends React.Component {
     }
   }
   render() {
+    const id = this.props.id;
+
     return (
       <div className="book">
       <div className="book-top">
@@ -26,8 +28,7 @@ class BookShelfItem extends React.Component {
             backgroundImage: `url(${this.getImageLink(this.props)})`
             }}>
         </div>
-        < BookDetailButton />
-
+        <BookDetailButton id={id}/>
       </div>
       <div className="book-title">{this.props.title}</div>
       <div className="book-authors">{this.props.authors}</div>

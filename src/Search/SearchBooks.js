@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import * as BooksAPI from '../utils/BooksAPI'
 import Autocomplete from './Autocomplete'
-import BookShelf from '../Bookshelf/BookShelf'
+import BookShelf from '../BookShelf/BookShelf'
 
 class SearchBooks extends React.Component {
   constructor(props) {
