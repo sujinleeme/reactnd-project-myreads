@@ -1,18 +1,29 @@
 import React from 'react';
+import * as BooksAPI from '../utils/BooksAPI'
 
 class BookDetailButton extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {value: ''};
+
     this.handleChange = this.handleChange.bind(this)
   
     
   }
     
   handleChange(event) {
-    this.setState({value: event.target.value});
+    
+    this.setState({value: event.target.value}, () => {
+      this.addBookShelf()
+    })
   }
+
+  addBookShelf() {
+    BooksAPI.update(this.props, this.state.value)
+    console.log(BooksAPI.update(this.props, this.state.value))
+  }
+  
 
   render() {
   
