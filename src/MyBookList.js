@@ -1,42 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
-import BookShelf from './BookShelf/BookShelf'
+import BookShelfContainer from './BookShelf/BookShelfContainer'
 
 class MyBookList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      shelvesTitles: ["wantToRead", "currentlyReading", "read"],
       books: [],
-      shelvesTitles: ['currentlyReading', 'wantToRead','read'],
       currentlyReading: [],
       wantToRead: [],
-      read: []
+      read: [],
+      updateShelfTitle: ''
     }
-
-
-    this.filterBooksbyShelfTitle = this.filterBooksbyShelfTitle.bind(this)
-    this.setBooksonShevles = this.setBooksonShevles.bind(this)
+    this.initShelves = this.initShelves.bind(this)
   }
   
-
-  componentDidMount() {
+  initShelves() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
-    .then(()=>
-      {
-        this.setBooksonShevles();
-      }
-    )
+    .then(()=> {
+      this.setBooksonShelves();
+    })
+  }
+
+  componentDidMount() {
+    this.initShelves()
   }
 
   filterBooksbyShelfTitle(books, title) {
     return books.filter(book => book.shelf === title)
   }
 
-  setBooksonShevles(){
+  setBooksonShelves(){
     const allBooks = this.state.books;
     const titles = this.state.shelvesTitles;
     return titles.map((title) => {
@@ -44,31 +43,24 @@ class MyBookList extends React.Component {
     })
   }
 
-   
   render() {
-
     return (
       <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <div>
-                <BookShelf bookList={this.state.currentlyReading} title="Currently Reading" />
-                <BookShelf bookList={this.state.wantToRead} title="Want To Read" />
-                <BookShelf bookList={this.state.read} title="Read Done" />
-              </div>
+              <BookShelfContainer updateShelf={this.initShelves} bookList={this.state.currentlyReading} title="Currently Reading" />
+              <BookShelfContainer updateShelf={this.initShelves} bookList={this.state.wantToRead} title="Want To Read" />
+              <BookShelfContainer updateShelf={this.initShelves} bookList={this.state.read} title="Read Done" />
             </div>
             <div className="open-search">
             <Link
-                to='/search'
-                onClick={() => this.setState({ showSearchPage: true })}
-              >Add a book</Link>
+              to='/search'
+            >Add a book</Link>
             </div>
-          </div>
+      </div>
     )
-    
-
   }
 
 }

@@ -8,12 +8,10 @@ class AutocompleteItem extends React.Component {
     this.state = {
       hoverFlag: false,
       clickEvent: null
-      
     }
     this.onHover = this.onHover.bind(this)
     this.offHover = this.offHover.bind(this)
     this.onEvent = this.onEvent.bind(this)
-    
   }
   
   onEvent(e) {

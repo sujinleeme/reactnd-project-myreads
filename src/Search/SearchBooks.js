@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import * as BooksAPI from '../utils/BooksAPI'
 import Autocomplete from './Autocomplete'
-import BookShelf from '../BookShelf/BookShelf'
+import BookShelfContainer from '../BookShelf/BookShelfContainer'
 
 class SearchBooks extends React.Component {
   constructor(props) {
@@ -25,15 +25,9 @@ class SearchBooks extends React.Component {
 
   updateQuery = (e) => {
     let word;
-    if (e.target){
-      word = e.target.value
-    }
-    else {
-      word = e;
-    }
-
+    e.target ? word = e.target.value : word = e
     this.setState({ query: word})
-    this.setState({ inputValue:  word })
+    this.setState({ inputValue: word })
   }
 
   trimQuery = () => {
@@ -57,10 +51,9 @@ class SearchBooks extends React.Component {
         this.trimQuery()
         this.onSearchBooks(this.state.query, this.state.resultNum)
         break
+        
       case 32:  // space
         return false
-      
-        
     }
 
   }
@@ -83,8 +76,8 @@ class SearchBooks extends React.Component {
         <div className="search-books-bar">
           <div className="close-search">
           <Link
-                to='/'
-                className="close-search"
+            to='/'
+            className="close-search"
           />
           </div>
           
@@ -105,7 +98,7 @@ class SearchBooks extends React.Component {
           <ol className="books-grid">
             {this.state.books && this.state.books.length > 0 ? (
               <div>
-                <BookShelf bookList={this.state.books} title="Result" />
+                <BookShelfContainer bookList={this.state.books} title={`Result: ${this.state.query}`} />
               </div> ) : (
               <p>No Book Found :(</p>
             )}

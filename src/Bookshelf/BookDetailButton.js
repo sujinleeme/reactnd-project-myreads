@@ -5,29 +5,32 @@ class BookDetailButton extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {value: ''};
-
+    this.state = {
+      value: ''
+    };
     this.handleChange = this.handleChange.bind(this)
-  
-    
   }
-    
+
+  componentDidMount() {
+    // initialize selectbox by shelf
+    this.setState({value: this.props.book.shelf}) 
+  }
+
   handleChange(event) {
-    
     this.setState({value: event.target.value}, () => {
-      this.addBookShelf()
+      this.moveToBookShelf()
     })
   }
 
-  addBookShelf() {
-    BooksAPI.update(this.props, this.state.value)
-    console.log(BooksAPI.update(this.props, this.state.value))
+  moveToBookShelf() {
+    const book = this.props.book
+    const title = this.state.value
+    BooksAPI.update(book, title).then(()=> {
+      this.props.updateShelf(this.state.value)
+    })  
   }
   
-
   render() {
-  
-
     return (
       <div className="book-shelf-changer">
           <select value={this.state.value} onChange={this.handleChange}>

@@ -15,9 +15,9 @@ class BookShelfItem extends React.Component {
       return (imageList.smallThumbnail)
     }
   }
+  
   render() {
     const book = this.props;
-
     return (
       <div className="book">
       <div className="book-top">
@@ -28,7 +28,9 @@ class BookShelfItem extends React.Component {
             backgroundImage: `url(${this.getImageLink(this.props)})`
             }}>
         </div>
-        <BookDetailButton book={book}/>
+        <BookDetailButton 
+          updateShelf={this.props.updateShelf}
+          book={book}/>
       </div>
       <div className="book-title">{this.props.title}</div>
       <div className="book-authors">{this.props.authors}</div>

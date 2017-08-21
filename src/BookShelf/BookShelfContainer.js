@@ -1,20 +1,22 @@
-import React from 'react';
+import React from 'react'
 import BookShelfItem from './BookShelfItem'
 
-class BookShelf extends React.Component {
-
+class BookShelfContainer extends React.Component {
       
   render() {
     const BookList = {...this.props.bookList}
-
+    const ShelfTitle = this.props.title
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.title}</h2>
+        <h2 className="bookshelf-title">{ShelfTitle}</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
               {Object.keys(BookList).map((k, index) =>
                 <li key={k} className="book">
-                  {<BookShelfItem {...BookList[k]} />}
+                  <BookShelfItem
+                    {...BookList[k]}
+                    updateShelf={this.props.updateShelf} 
+                  />
                 </li>
               )}
             </ol>
@@ -24,4 +26,4 @@ class BookShelf extends React.Component {
   }
 }
 
-export default BookShelf;
+export default BookShelfContainer;
