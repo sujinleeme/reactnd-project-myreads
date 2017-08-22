@@ -55,7 +55,6 @@ class SearchBooks extends React.Component {
       case 32:  // space
         return false
     }
-
   }
 
   onSearchBooks = (keyword, count) => {
@@ -72,7 +71,6 @@ class SearchBooks extends React.Component {
   render() {
     return (
       <div className="search-books">
-
         <div className="search-books-bar">
           <div className="close-search">
           <Link
@@ -80,7 +78,6 @@ class SearchBooks extends React.Component {
             className="close-search"
           />
           </div>
-          
           <div className="search-books-input-wrapper">
             <Autocomplete
               highlightedValue={this.state.highlightedValue}
