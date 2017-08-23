@@ -1,12 +1,79 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+*:focus {
+  outline: none;
+}
+
+
+
 html, body, .root {
   height: 100%;
 }
+
+
 body {
   line-height: 1.5;
   font-family: 'Quicksand',  sans-serif;
 }
 body, .app {
   background: white;
+  min-height: 100%;  
+}
+
+input, button, submit
+{
+  border:none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 /* main page */
@@ -20,17 +87,27 @@ body, .app {
   font-weight: 400;
   margin: 0;
   color: white;
+  font-size: 30px;
 }
 
 .list-books-content {
-  padding: 0 0 80px;
+  padding: 50px;
   flex: 1;
+}
+
+p.notFound {
+  color: #5b5b5b;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .bookshelf {
   padding: 0 10px 20px;
 }
 
+a:active {
+  color: 
+}
 @media (min-width: 600px) {
   .bookshelf {
     padding: 0 20px 40px;
@@ -39,6 +116,7 @@ body, .app {
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  font-size: 20px;
 }
 .bookshelf-books {
   text-align: center;
@@ -64,26 +142,51 @@ body, .app {
 }
 
 /* search page */
+#search {
+  padding: 50px;
+}
 
-.search-books-bar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+.search-wrap {
+  width: 500px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.search-books-input-wrapper {
-  flex: 1;
-  /* background: #e9e; */
-}
-.search-books-bar input {
+
+.search-bar {
+  background: #fff;
   width: 100%;
-  padding: 15px 10px;
-  font-size: 1.25em;
-  border: none;
-  outline: none;
+  position: inline-flex;
+  height: 41px;
+  
+   align-items:center;
+}
+
+.search-bar input {
+  width: 90%;
+  font-size: 18px;
+  font-family: 'Quicksand',  sans-serif;
+  padding-left: 10px !important;  
+  position: absolute;
+  top: 0px;
+  height: 41px;
+  padding: 0;
+  border: 2px solid #00c73c;
+}
+
+
+.search_btn {
+  position: absolute;
+  top: 0px;
+  height: 41px;
+  padding: 0;
+  width: 10%;
+  background: #00c73c;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  font-size: 25px !important;
+  left: 90%;
 }
 
 .close-search {
@@ -99,6 +202,25 @@ body, .app {
   background-size: 28px;
   font-size: 0;
 }
+
+
+.match-keywords {
+  max-height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #dedede;
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+
 
 .search-books-results {
   padding: 80px 10px 20px;
@@ -174,22 +296,28 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+/* material-icons */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 
-.match-keyhwords {
-    position: absolute;
-}
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
 
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
 
-.match-keywords {
-  max-height: 300px;
-  overflow-y: scroll;
-}
-
-li {
-  list-style: none;
-}
-
-ol {
-  margin: 0;
-  padding: 0;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

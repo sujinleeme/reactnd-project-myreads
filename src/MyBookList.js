@@ -47,7 +47,7 @@ class MyBookList extends React.Component {
     return (
       <div className="list-books">
             <div className="list-books-title">
-              <h1>MyReads</h1>
+              <h1>MY READS</h1>
             </div>
             <div className="list-books-content">
               <BookShelfContainer updateShelf={this.initShelves} bookList={this.state.currentlyReading} title="Currently Reading" />

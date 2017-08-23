@@ -11,6 +11,7 @@ class Autocomplete extends React.Component {
 
     this.state = {
       list: SearchKeywords,
+      matchedList: [],
       showItems: false,
     }
 
@@ -37,18 +38,23 @@ class Autocomplete extends React.Component {
   }
 
   renderMatches() {
-    const props = this.props;
+    const props = this.props
     let searchableKeywords = this.currentMatches()
-    
     return (
-      <ol className="match-keywords">
-        {Object.keys(searchableKeywords).map((k, index) =>
+      <div>
+        {searchableKeywords && searchableKeywords.length > 0 ? (
+          <ol className="match-keywords">
+          {Object.keys(searchableKeywords).map((k, index) =>
           <AutocompleteItem
             key={k}
             {...props}            
             {...searchableKeywords[k]} />
         )} 
-      </ol>
+          </ol>
+        ) : (
+          null
+        )}
+      </div>
     )
   }
   

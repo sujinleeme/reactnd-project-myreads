@@ -48,8 +48,7 @@ class SearchBooks extends React.Component {
 
       case 13: // enter
         e.preventDefault()
-        this.trimQuery()
-        this.onSearchBooks(this.state.query, this.state.resultNum)
+        this.onSearchBooks()
         break
         
       case 32:  // space
@@ -57,7 +56,10 @@ class SearchBooks extends React.Component {
     }
   }
 
-  onSearchBooks = (keyword, count) => {
+  onSearchBooks = () => {
+    const keyword = this.state.quert
+    const count = this.state.resultNum
+    this.trimQuery()
     BooksAPI.search(keyword, count).then((books) => {
       this.setState({ books })
     })
@@ -65,21 +67,21 @@ class SearchBooks extends React.Component {
 
   handleKeywordChange = (itemValue) => {
     this.setState({ highlightedValue: itemValue })
-    this.setState({ inputValue: itemValue });
   }
 
   render() {
     return (
-      <div className="search-books">
-        <div className="search-books-bar">
-          <div className="close-search">
+      <div id="search">
+        <div className="close-search">
           <Link
             to='/'
             className="close-search"
           />
+          
           </div>
-          <div className="search-books-input-wrapper">
+          <div className="search-wrap">
             <Autocomplete
+              className="search-bar"
               highlightedValue={this.state.highlightedValue}
               query={this.state.query}
               inputValue={this.state.inputValue}
@@ -89,7 +91,6 @@ class SearchBooks extends React.Component {
               onSelectItem={this.handleKeywordChange}
               placeholder="Search by title or author"
             />
-          </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
@@ -97,7 +98,7 @@ class SearchBooks extends React.Component {
               <div>
                 <BookShelfContainer bookList={this.state.books} title={`Result: ${this.state.query}`} />
               </div> ) : (
-              <p>No Book Found :(</p>
+              <p className="notFound">No Book Found :(</p>
             )}
           </ol>
         </div>
