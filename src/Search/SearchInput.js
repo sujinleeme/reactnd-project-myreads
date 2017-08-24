@@ -6,7 +6,6 @@ class SearchInput extends React.Component {
     const props = this.props;
     return (
       <div className={props.className}>
-
         <input
           value={props.inputValue}
           onBlur={props.changeInputValue}
@@ -15,7 +14,6 @@ class SearchInput extends React.Component {
           placeholder={props.placeholder}
         />
         <button className="search_btn material-icons">search</button>
-       
         </div>
     )
   }

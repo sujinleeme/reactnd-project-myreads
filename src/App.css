@@ -95,7 +95,7 @@ a {
   flex: 1;
 }
 
-p.notFound {
+p.msg {
   color: #5b5b5b;
   font-weight: bold;
   font-size: 20px;
