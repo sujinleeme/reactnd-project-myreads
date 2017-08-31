@@ -1,1 +1,0 @@
-export const firebaseKey = {  apiKey: "AIzaSyDKUQzecWib5tFNfF8ULNIW7dIlYuExJOM",  authDomain: "sujinlee-reactnd-project.firebaseapp.com",  databaseURL: "https://sujinlee-reactnd-project.firebaseio.com",  projectId: "sujinlee-reactnd-project",  storageBucket: "sujinlee-reactnd-project.appspot.com",  messagingSenderId: "196007266883"};
