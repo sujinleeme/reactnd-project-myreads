@@ -33,7 +33,6 @@ chrome-user-data
 *react*min*.js
 !src/node_modules
 .editorconfig
-.vscode/
 yarn.lock
 src/firebaseKey.js
 build/
