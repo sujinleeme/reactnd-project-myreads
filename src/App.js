@@ -31,7 +31,6 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     this.initShelves()
-    console.log('update!!!');
   }
 
   filterBooksbyShelfTitle(books, title) {

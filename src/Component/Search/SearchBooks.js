@@ -26,7 +26,6 @@ class SearchBooks extends React.Component {
     this.handelKeyPress = this.handelKeyPress.bind(this)
     this.changeInputValue = this.changeInputValue.bind(this)
     this.handleKeywordChange = this.handleKeywordChange.bind(this)
-    this.notupdateShelf = this.notupdateShelf.bind(this)
     this.onSearchBooks = this.onSearchBooks.bind(this)
   }
 
