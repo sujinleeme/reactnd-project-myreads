@@ -13,8 +13,8 @@ class SearchInput extends React.Component {
           onKeyPress={props.handelKeyPress}
           placeholder={props.placeholder}
         />
-        <button onClick={props.onSearchBooks} className="search_btn material-icons" >search</button>
-        </div>
+        <button onClick={props.onSearchBooks} className="search_btn material-icons">search</button>
+      </div>
     )
   }
 }
