@@ -7,7 +7,7 @@ class BookDetailButton extends React.Component {
     super(props)
     this.state = {
       value: null
-    };
+    }
     this.handleChange = this.handleChange.bind(this)
   }
 

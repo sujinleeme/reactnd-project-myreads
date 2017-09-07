@@ -7,7 +7,7 @@ import ClickOutsideBehavior from '../../../utils/ClickOutsideBehavior'
 
 class Autocomplete extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       list: SearchKeywords,
       matchedList: [],
@@ -38,7 +38,7 @@ class Autocomplete extends React.Component {
   currentMatches() {
     const list = this.state.list.SearchKeywords
     return list.filter((item) => {
-      let searchInput = this.props.query;
+      let searchInput = this.props.query
       return item.label.indexOf(searchInput) > -1;
     })
   }

@@ -2,8 +2,7 @@ import React from 'react'
 
 class AutocompleteItem extends React.Component {
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state = {
       hoverFlag: false,
       clickEvent: null

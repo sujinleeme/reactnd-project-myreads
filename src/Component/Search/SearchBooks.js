@@ -8,7 +8,7 @@ import BookShelfContainer from '../BookShelf/BookShelfContainer'
 
 class SearchBooks extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showResult: false,
       query: "",
@@ -43,7 +43,7 @@ class SearchBooks extends React.Component {
   }
 
   updateQuery = (e) => {
-    let word;
+    let word
     e.target ? word = e.target.value : word = e
     this.setState({query: word})
     this.setState({inputValue: word})
@@ -61,7 +61,7 @@ class SearchBooks extends React.Component {
   }
 
   handelKeyPress = (e) => {
-    let code = (e.keyCode ? e.keyCode : e.which);
+    let code = (e.keyCode ? e.keyCode : e.which)
     switch (code) {
       default:
         break
@@ -99,7 +99,7 @@ class SearchBooks extends React.Component {
       <div className="search-result-msg">
         {this.getSpecificNotification(text)[state]}
       </div>
-    );
+    )
   }
 
   notFoundMessage = () => {

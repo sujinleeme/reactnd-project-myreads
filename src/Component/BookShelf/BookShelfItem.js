@@ -8,7 +8,7 @@ class BookShelfItem extends React.Component {
     super(props)
     this.state = {
       shelfTitle: null
-    };
+    }
     this.inMyBookList = this.inMyBookList.bind(this)
   }
 
