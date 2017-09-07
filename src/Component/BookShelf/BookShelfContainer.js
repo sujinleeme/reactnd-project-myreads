@@ -5,9 +5,8 @@ class BookShelfContainer extends React.Component {
 
   render() {
     const BookList = {...this.props.bookList}
-    const myBooks = this.props.myBooks
-    const ShelfTitle = this.props.title
-
+    const { myBooks, title: ShelfTitle } = this.props
+    
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{ShelfTitle}</h2>

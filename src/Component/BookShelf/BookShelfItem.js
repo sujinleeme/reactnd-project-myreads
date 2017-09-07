@@ -43,7 +43,7 @@ class BookShelfItem extends React.Component {
 
     return (
       <div className="book">
-        <div className="book-top">:
+        <div className="book-top">
           <div className="book-cover" style={coverStyle}></div>
           <BookDetailButton
             shelf={this.state.shelfTitle}
