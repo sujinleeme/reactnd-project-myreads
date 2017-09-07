@@ -55,6 +55,10 @@ Within the download you'll find the following directories and files:
     |-- App.js
     |-- App.test.js
     |-- Component
+    |   |-- Autocomplete
+    |   |   |-- Autocomplete.js
+    |   |   |-- AutocompleteItem.js
+    |   |   `-- SearchInput.js    
     |   |-- BookShelf
     |   |   |-- BookDetailButton.js
     |   |   |-- BookShelfContainer.js
@@ -64,10 +68,6 @@ Within the download you'll find the following directories and files:
     |   |-- Notification
     |   |   `-- Info.js
     |   `-- Search
-    |       |-- Autocomplete
-    |       |   |-- Autocomplete.js
-    |       |   |-- AutocompleteItem.js
-    |       |   `-- SearchInput.js
     |       `-- SearchBooks.js
     |-- fire.js 
     |-- icons
