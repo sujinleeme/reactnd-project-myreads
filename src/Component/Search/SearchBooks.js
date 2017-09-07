@@ -19,13 +19,6 @@ class SearchBooks extends React.Component {
       keyword: "",
       showAutoComplete: false
     }
-
-    this.onAutoComplete = this.onAutoComplete.bind(this)
-    this.offAutoComplete = this.offAutoComplete.bind(this)
-    this.updateQuery = this.updateQuery.bind(this)
-    this.handelKeyPress = this.handelKeyPress.bind(this)
-    this.changeInputValue = this.changeInputValue.bind(this)
-    this.handleKeywordChange = this.handleKeywordChange.bind(this)
     this.onSearchBooks = this.onSearchBooks.bind(this)
   }
 

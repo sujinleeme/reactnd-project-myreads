@@ -8,7 +8,6 @@ class BookDetailButton extends React.Component {
     this.state = {
       value: null
     }
-    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount = () => {
@@ -21,7 +20,7 @@ class BookDetailButton extends React.Component {
     })
   }
 
-  moveToBookShelf() {
+  moveToBookShelf = () => {
     const book = this.props.book
     const title = this.state.value
     BooksAPI.update(book, title).then(() => {

@@ -9,7 +9,6 @@ class BookShelfItem extends React.Component {
     this.state = {
       shelfTitle: null
     }
-    this.inMyBookList = this.inMyBookList.bind(this)
   }
 
   getImageLink = (obj) => {
@@ -19,7 +18,7 @@ class BookShelfItem extends React.Component {
     }
   }
 
-  inMyBookList() {
+  inMyBookList = () => {
     const myBooks = this.props.myBooks
     const bookID = this.props.id
     const isInMyShelf = myBooks.filter(e => e.id === bookID)
@@ -32,7 +31,7 @@ class BookShelfItem extends React.Component {
     this.inMyBookList()
   }
 
-  render() {
+  render() {    
     const book = this.props
     const bookID = this.props.id
     const coverStyle = {

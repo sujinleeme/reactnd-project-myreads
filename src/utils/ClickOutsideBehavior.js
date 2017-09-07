@@ -42,5 +42,4 @@ class ClickOutsideBehavior extends React.Component {
   }
 }
 
-
 export default ClickOutsideBehavior

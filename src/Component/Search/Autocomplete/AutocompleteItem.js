@@ -7,25 +7,22 @@ class AutocompleteItem extends React.Component {
       hoverFlag: false,
       clickEvent: null
     }
-    this.onHover = this.onHover.bind(this)
-    this.offHover = this.offHover.bind(this)
-    this.onEvent = this.onEvent.bind(this)
   }
 
-  onEvent(e) {
+  onEvent = (e) => {
     this.props.updateQuery(this.props.highlightedValue)
     if (this.props.highlightedValue) {
       this.props.onSearchBooks()
     }
   }
 
-  onHover() {
+  onHover = () => {
     this.setState({hoverFlag: true})
     this.props.onSelectItem(this.props.label)
     this.setState({clickEvent: event});
   }
 
-  offHover() {
+  offHover = () => {
     this.setState({hoverFlag: false})
     this.props.onSelectItem(this.props.label)
     this.setState({clickEvent: event});
