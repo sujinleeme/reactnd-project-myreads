@@ -97,10 +97,8 @@ In search page(`/search`), you can get the list of books as by your input keywor
  Autocomplete, or word completion, is a feature that I created additionally, in which an application predicts the rest of a book category a user is typing. [Here](https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md) is the whitelisted short collection of available search terms in starter repo.
 > This feature isn't completed yet. Later, I will improve slightly as following [#issue](https://github.com/sujinleeme/reactnd-project-myreads/issues/5). (Aug. 31. 2017)
 
-
 ####  Hosting React app with Firebase hosting
  The app runs on live Firebase server now.
-
 
 ## Copyright and License 
 A Project [starter code](https://github.com/udacity/reactnd-project-myreads-starter) contributed by Udacity.
