@@ -5,10 +5,6 @@
 import React from 'react'
 
 class ClickOutsideBehavior extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside)
   }

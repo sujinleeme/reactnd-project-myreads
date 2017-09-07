@@ -13,7 +13,7 @@ This is a myreads website project for [Udacity’s React Nanodegree](https://www
 For a demo, check out [https://sujinlee-reactnd-project.firebaseapp.com/](https://sujinlee-reactnd-project.firebaseapp.com/)
 
 ## Quick Start
-### Running locally
+### To run locally:
 ```
 git clone https://github.com/sujinleeme/reactnd-project-myreads.git
 cd reactnd-project-myreads
@@ -26,6 +26,26 @@ npm start
 install all project dependencies with npm install
 start the development server with npm start or yarn start
 ```
+
+### To build & deploy on firebase:
+```
+npm run build && npm run deploy
+```
+
+* Add API keys to `./src/firebaseKey` file, your `.firebaseKey` file should like something like this:
+
+```javascript
+const firebaseKey = {
+  apiKey: yours
+  authDomain: yours,
+  databaseURL: yours,
+  projectId: yours,
+  storageBucket: yours,
+  messagingSenderId: yours
+};
+export default firebaseKey;
+```
+
 ## Documentation
 ### What's included
 Within the download you'll find the following directories and files:
