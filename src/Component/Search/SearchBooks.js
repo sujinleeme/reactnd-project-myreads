@@ -74,6 +74,7 @@ class SearchBooks extends React.Component {
     this.setState({showResult: true})
     BooksAPI.search(keyword, count).then((books) => {
       this.setState({books})
+    }).then(()=> {
     })
   }
 
@@ -107,7 +108,7 @@ class SearchBooks extends React.Component {
     const props = this.props
     const list = this.state.books
     const isInit = !this.state.showResult
-    const isEmpty = !this.state.books
+    const isEmpty = !list
     const keyword = Common.capitalizeTitle(this.state.keyword)
     const myBooks = this.props.myBooks
     return (
@@ -138,13 +139,17 @@ class SearchBooks extends React.Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {isInit ? this.initMessage() :
-              (isEmpty ? this.notFoundMessage()
-                  : <BookShelfContainer
+              (isEmpty ? 
+                this.notFoundMessage()
+                  : (list.error? 
+                    this.notFoundMessage() :
+                    <BookShelfContainer
                       myBooks={myBooks}
                       bookList={list}
                       title={`Result: ${keyword}`}
                       updateShelf={props.initShelves}
                     />
+                    )
               )
             }
           </ol>
